@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import express from 'express';
 import cors from 'cors';
 import bcrypt from 'bcryptjs';
-import { JsonWebTokenError } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { UserModel as User } from './models/User.js';
 import { PlaceModel as Place } from './models/Place.js';
 import { BookingModel as Booking } from './models/Booking.js';
@@ -15,11 +15,13 @@ import { dirname } from 'path';
 import mime from 'mime-types';
 import { fileURLToPath } from 'url';
 import { config } from 'dotenv';
+
 config();
 const app = express();
 
-
+const port = process.env.PORT;
 const mongoURL = process.env.MONGO_URL;
+
 mongoose
   .connect(mongoURL)
   .then(async () => {
@@ -227,4 +229,6 @@ app.get('/api/bookings', async (req, res) => {
   res.json(await Booking.find({ user: userData.id }).populate('place'));
 });
 
-app.listen(4000);
+app.listen(port, () => {
+  console.log('Server is running on port: ' + port);
+});

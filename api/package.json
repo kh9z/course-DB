@@ -1,16 +1,57 @@
 {
-  "type":"module",
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "type": "module",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint format build"
+    }
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon ./src/app.js",
+    "start": "node src/app.js",
+    "lint": "npx eslint ./src",
+    "format": "npx eslint ./src --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndriiBabushko/task-management-tool"
+  },
+  "author": "gfg",
+  "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.279.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2",
     "image-downloader": "^4.3.0",
-    "jsonwebtoken": "^9.0.0",
     "mime-types": "^2.1.35",
-    "mongoose": "^6.8.3",
-    "multer": "^1.4.5-lts.1"
+    "bcrypt": "5.1.0",
+    "body-parser": "1.20.2",
+    "cors": "2.8.5",
+    "cross-env": "7.0.3",
+    "dotenv-flow": "3.2.0",
+    "express": "4.18.2",
+    "express-validator": "7.0.0",
+    "jsonwebtoken": "9.0.0",
+    "mongodb": "5.1.0",
+    "mongoose": "7.0.2",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.2",
+    "nodemailer": "6.9.2",
+    "path": "^0.12.7",
+    "peers": "0.1.0",
+    "uuid": "9.0.0",
+    "validator": "13.9.0"
+  },
+  "devDependencies": {
+    "eslint": "8.41.0",
+    "husky": "8.0.3",
+    "mongodb-memory-server": "8.12.2",
+    "nodemon": "2.0.21",
+    "prettier": "2.8.8",
+    "rimraf": "5.0.1"
   }
 }
