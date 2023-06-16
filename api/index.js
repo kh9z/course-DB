@@ -18,6 +18,7 @@ import { config } from 'dotenv';
 config();
 const app = express();
 
+
 const mongoURL = process.env.MONGO_URL;
 mongoose
   .connect(mongoURL)
